@@ -1,0 +1,132 @@
+
+
+
+_reset.cfg  	//allows you to reset most important settings, feel free to adjust it for your needs
+_fe.cfg			//funny editing cfg (you will need to activate it after opening a demo)
+_infostreams	//cfg that echoes information into the game console
+
+0hud, 1beauty, 2viewmodel etc are layers/streams/passes
+
+
+
+███████╗██████╗░██╗████████╗██╗███╗░░██╗░██████╗░
+██╔════╝██╔══██╗██║╚══██╔══╝██║████╗░██║██╔════╝░
+█████╗░░██║░░██║██║░░░██║░░░██║██╔██╗██║██║░░██╗░
+██╔══╝░░██║░░██║██║░░░██║░░░██║██║╚████║██║░░╚██╗
+███████╗██████╔╝██║░░░██║░░░██║██║░╚███║╚██████╔╝
+╚══════╝╚═════╝░╚═╝░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░
+
+
+
+
+____________________________[MAIN]_____________________________
+vstr reset    -> reset all your game settings (view _reset.cfg)
+[F8] exec _fe -> reset clipping, ssao, viewmodel, fov, hud, stream preview and more (view _fe.cfg)"
+vstr streams  -> view streams and recording information"
+____________________________[TIME]_____________________________
+[Up/Down Arrows] -> change demo playback speed"    
+[Spacebar]       -> pause/resume
+___________________________[CAMERA]____________________________
+[F1] -> toggle codmvm launcher menu
+[F2] -> toggle camera/pov mode
+
+[W/A/S/D] -> move the camera forward/left/backward/right
+[E/Q]     -> move the camera up/down
+[Scroll]  -> roll the camera
+[Shift + Scroll]     -> adjust the fov (cg_fov)
+[Side Mouse Buttons] -> adjust the camera speed (mvm_cam_speed)
+
+[K]  -> add a camera point (4 points required to create a campath)
+[J]  -> play a campath (rewind ticks before the campath to avoid demo reloading)
+[L]  -> delete a campath
+
+vstr linear     -> use linear campath mode (2 points required)
+vstr bezier     -> use bezier campath mode (4 points required)
+[Scroll Button] -> toggle between linear/bezier campath mode
+
+vstr save -> save a campath <cod4dir\main\campath.cam>
+vstr load -> load a campath <cod4dir\main\campath.cam>
+
+How to use a frozen campath feature:
+1. Delete a campath if exist [L] to be able to switch to a frozen mode
+2. Switch to a frozen campath mode by pressing [F4]
+3. Make a campath and pause the demo at any tick you like
+4. Press [J] to play a campath, you can adjust the campath speed using [Up/Down Arrows]
+5. When you're happy with a result, press [R] to start recording
+6. Once you done, delete a campath [L] and switch to a normal campath mode [F4]
+__________________________[CONFIGS]____________________________
+vstr <hud0/hud1> -> toggle hud visibility
+[F6] devgui      -> toggle devgui (iw3xo only)
+//vstr animate   -> animate command values (_infoanimate.cfg)
+//vstr misc      -> interesting commands (_infomisc.cfg)
+_______________________________________________________________
+
+
+
+
+
+░██████╗████████╗██████╗░███████╗░█████╗░███╗░░░███╗░██████╗
+██╔════╝╚══██╔══╝██╔══██╗██╔════╝██╔══██╗████╗░████║██╔════╝
+╚█████╗░░░░██║░░░██████╔╝█████╗░░███████║██╔████╔██║╚█████╗░
+░╚═══██╗░░░██║░░░██╔══██╗██╔══╝░░██╔══██║██║╚██╔╝██║░╚═══██╗
+██████╔╝░░░██║░░░██║░░██║███████╗██║░░██║██║░╚═╝░██║██████╔╝
+╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
+
+
+
+___________________________[STREAMS]___________________________
+Adjust recording settings in `_fe.cfg`
+
+You can preview a preset by typing `exec <presetname>`
+ex: `exec 2viewmodel` will preview a viewmodel only layer
+Stop the preview by typing `exec _fe.cfg` or pressing [F8]
+
+How to record pov:
+Press [R] to start recording, press again to stop.
+
+How to record a cinematic:
+1. Rewind the ticks before a campath, move to the 1st point [J] and finally press [R] to start recording
+2. Once your recording is automatically finished, reactive the main cfg `exec _fe` or [F8]
+
+vstr near     -> disable near clipping (close objects won't disappear, far objects will become glitchy)
+vstr ssao     -> enable ssao/shadows (iw3xo only)
+[F8] exec _fe -> deactivate `near` and `ssao`
+
+Notes:
+- To hide a skull/death icon you need to install the mod: https://cfgfactory.com/downloads/show/5ecc52e1f0a99
+- You can't hide a player who recorded the demo on particle layers
+- COD4 lack of console commands which toggling visibility of different objects, that's why I couldn't make a lot of layers
+___________________________[PRESETS]___________________________
+//hud
+0hud -> hud (background = green)
+
+//main
+1game   -> basic layer
+1beauty -> basic layer - hud - shellshock - flashbang - fog
+
+//viewmodel
+2viewmodel       -> viewmodel (background = green)
+2viewmodelLuma   -> viewmodel (type = depth)
+2viewmodelNormal -> viewmodel (background = black, type = normal)
+
+//particles
+3particlesNoclip       -> particles + world shells - walls (background = green)
+3particlesShellsNoClip -> particles + world & pov shells - walls (background = green)
+3shells                -> pov shells - walls (the layer is messy, you will need to mask shells in editing software) (background = green)
+
+//players
+4players -> players - walls (only a player who recorded the demo is drawn + some ragdolls) (background = green)
+
+//backgrounds
+5beautyNoViewmodel         -> beauty layer - viewmodel - fog
+5beautyNoViewmodelNoShells -> beauty layer - viewmodel - pov shells - fog
+5worldPlayers              -> world + players - fog
+
+//advanced
+6depth             -> beauty's depth - pov shells              (type = depth)
+6depthNoViewmodel  -> beauty's depth - viewmodel - pov shells  (type = depth)
+6normal            -> beauty's normal                          (type = normal)
+6normalNoViewmodel -> beauty's normal - viewmodel - pov shells (type = normal)
+_______________________________________________________________
+
+0hud 1game 1beauty 2viewmodel 2viewmodelLuma 2viewmodelNormal 3particlesNoclip 3particlesShellsNoClip 3shells 4players 5beautyNoViewmodel 5beautyNoViewmodelNoShells 5worldPlayers 6depth 6depthNoViewmodel 6normal 6normalNoViewmodel
