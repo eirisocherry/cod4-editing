@@ -1,3 +1,5 @@
+WORK IN PROGRESS...
+
 # Information
 COD4 editing configs.  
 Wiki: https://github.com/eirisocherry/cod4-editing/wiki  
